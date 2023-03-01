@@ -46,3 +46,13 @@ def updateContact(request, contact_id):
             return Response(serializer.data)
         return Response(serializer.errors, status=400)
 
+# DELETE operations
+@api_view(['DELETE'])
+def deleteContact(request, contact_id):
+    if request.method == "DELETE":
+        try:
+            contact = Contact.objects.get(id=contact_id)
+        except Contact.DoesNotExist:
+            return Response(status=404)
+        contact.delete()
+        return Response(status=204)
