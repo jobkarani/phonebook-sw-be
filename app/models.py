@@ -8,7 +8,6 @@ class Contact(models.Model):
     lastName = models.CharField(max_length=200, null=True)
     email = models.EmailField(max_length=256, unique=True)
     phoneNumber = models.IntegerField(max_length=200, null=True)
-    profilePicture = ImageField( manual_crop="", null=True)
     location = models.CharField(max_length=200, null=True)
 
     class Meta:
